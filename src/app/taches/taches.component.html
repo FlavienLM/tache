@@ -1,0 +1,30 @@
+<div class="mx-auto container" style="width: 500px;">
+    <div class="card w-75">
+      <div class="card-body">
+        <h5 class="card-title">Tâches</h5>
+        <form  (ngSubmit)="validation(formulaire)" #formulaire="ngForm">
+          <div class="form-group">
+            <input type="text" name="nouvelleTache" ngModel required class="form-control" placeholder="Nouvelle tâche">
+          </div>
+          <button [disabled]="formulaire.invalid" type="submit" class="btn btn-primary">Ajouter</button>
+        </form>
+        <button [disabled]="listeTaches.length < 1" class="btn btn-danger" (click)="Reinitialiser()">Tout Supprimer</button>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let t of listeTaches; index as i">
+          <td [ngClass]="{'terminer' : t.completed}"> {{ t.title }}</td>
+          <td><input class="form-check-input"  [id]="i" type="checkbox" (change)="modifieEtat(i)" [checked]="t.completed">Effectué</td>
+          <td><button type="button" class="btn btn-danger" (click)="supprimer(i)">Supprimer</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
