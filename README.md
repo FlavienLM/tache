@@ -18,3 +18,5 @@ Site de l'API
 ```
 https://fakerestapi.azurewebsites.net/index.html
 ```
+
+![imageTache](./imageReadMe/imageTache.png)
